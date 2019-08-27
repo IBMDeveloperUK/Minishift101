@@ -1,16 +1,17 @@
-# Introduction to Kubernetes
+# What is OpenShift?
 
-This repository contains the material for the Kubernetes 101 workshop run by IBM Code.
+Red Hat® OpenShift® is supported Kubernetes for cloud-native applications with enterprise security. Although Kubernetes has great scalability, workload portability and intuitive abstractions which allows you to seperate business and developer concerns, it is still quite a concern to install, deploy and keep clusters operational. OpenShift is  
 
-If you were not present at the meetup it is highly recommended that you read the slides and/or watch the [video](https://www.youtube.com/watch?v=QBPgtYTZqA4) before attempting the workshop.
+This repository contains the hands-on workshops to get started and familiar with OpenShift concepts using the Minishift flavour which allows you to create a local OpenShift cluster. 
 
-The [Workshop], with detailed explanations about the principles of operating an application in a Kubernetes environment, gives you a taste of deploying and scaling applications.
+## Introduction to Minishift
 
-[![Kube 101 Recording](https://img.youtube.com/vi/QBPgtYTZqA4/0.jpg)](https://www.youtube.com/watch?v=QBPgtYTZqA4)
+The workshop below runs through a series of scenarios for creating, deploying and managing micro-services within an Minishift environment.
 
-- [Presentation]
+[![OpenShift Overview](https://www.openshift.com/hubfs/video_Red-Hat-OpenShift-overview.jpg)](https://www.youtube.com/watch?v=5dwMrFxq8sU)
+
+- [Installation]
 - [Workshop]
-- [IBM Code London Meetup](https://www.meetup.com/IBM-Code-London/)
 
-[Presentation]: ./presentation/Kubernetes_101.pdf
+[Installation]: ./
 [Workshop]: ./workshop/README.md
