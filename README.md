@@ -20,5 +20,5 @@ The workshops below run through a series of scenarios for creating, deploying an
 [Setup]: ./workshop
 [prerequisites]: ./workshop
 [Lab 1]: ./workshop/Lab1/README.md
-[Lab 1]: ./workshop/Lab2/README.md
+[Lab 2]: ./workshop/Lab2/README.md
 [Lab 3]: ./workshop/Lab3/README.md
