@@ -6,14 +6,19 @@ Red Hat® OpenShift® is supported Kubernetes for cloud-native applications with
 
 This repository contains the hands-on workshops to get started and familiar with OpenShift concepts using the Minishift flavour which allows you to create a local OpenShift cluster. 
 
+[![OpenShift Overview](https://www.openshift.com/hubfs/video_Red-Hat-OpenShift-overview.jpg)](https://www.youtube.com/watch?v=5dwMrFxq8sU)
+
 ## Introduction to Minishift
 
-The workshop below runs through a series of scenarios for creating, deploying and managing micro-services within an Minishift environment.
-
-[![OpenShift Overview](https://www.openshift.com/hubfs/video_Red-Hat-OpenShift-overview.jpg)](https://www.youtube.com/watch?v=5dwMrFxq8sU)
+The workshops below run through a series of scenarios for creating, deploying and managing micro-services within an OpenShift single-node cluster using Minishift. Before running any of the labs, make sure you have correctly installed Minishift along with any other [prerequisites].
 
 - [Setup]
 - [Lab 1]
+- [Lab 2]
+- [Lab 3]
 
 [Setup]: ./workshop
+[prerequisites]: ./workshop
 [Lab 1]: ./workshop/Lab1/README.md
+[Lab 1]: ./workshop/Lab2/README.md
+[Lab 3]: ./workshop/Lab3/README.md
