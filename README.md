@@ -1,4 +1,4 @@
-<img src="https://avatars1.githubusercontent.com/u/38341030?s=200&v=4">
+<img src="https://avatars1.githubusercontent.com/u/38341030?s=150&v=4">
 
 # What is OpenShift?
 
@@ -12,8 +12,8 @@ The workshop below runs through a series of scenarios for creating, deploying an
 
 [![OpenShift Overview](https://www.openshift.com/hubfs/video_Red-Hat-OpenShift-overview.jpg)](https://www.youtube.com/watch?v=5dwMrFxq8sU)
 
-- [Installation]
-- [Workshop]
+- [Setup]
+- [Lab 1]
 
-[Installation]: ./
-[Workshop]: ./workshop/README.md
+[Setup]: ./workshop
+[Lab 1]: ./workshop/Lab1/README.md
