@@ -54,7 +54,7 @@ To login as administrator:
 -- Exporting of OpenShift images is occuring in background process with pid 5703.
 ```
 
-*Note that both your console address and your pid will be different.*
+*NOTE: Both your console address and your pid will be different.*
 
 # Further cluster configurations
 
