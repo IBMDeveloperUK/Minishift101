@@ -2,7 +2,7 @@
 
 Learn how to login to your OpenShift cluster and create a new project in Minishift.
 
-# 1. Login to the cluster
+## 1. Login to the cluster
 
 Login to the cluster with the output from the command after running `minishift start` as described in [setup overview](../README.md).
 
@@ -18,7 +18,7 @@ eval $(minishift oc-env)
 
 As you will be able to see, there are several projects available to be able to switch between different workloads.
 
-# 2. Create a project
+## 2. Create a project
 
 You should have a default project setup already but we will create a new project for our new application. 
 
