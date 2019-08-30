@@ -1,187 +1,104 @@
-# Lab 2: Scale and Update Deployments
+# Lab 2: Create and manage your first application
 
-In this lab, you'll learn how to update the number of instances
-a deployment has and how to safely roll out an update of your application
-on Kubernetes.
+In this lab, we will deploy our first application into our cluster.
 
-For this lab, you need a running deployment of the `guestbook` application
-from the previous lab. If you deleted it, recreate it using:
+## 1. Creating an app 
 
-```console
-$ kubectl run guestbook --image=ibmcom/guestbook:v1
+There are several ways in which you can create an app in OpenShift:
+
+- From source code
+- From DockerHub images
+- From OpenShift templates
+- From the OpenShift UI
+
+### 1.1 Creating an app from source
+
+With `oc new-app` command, you can create an application in OpenShift from some existing source code either locally or with the url to the repository. If a source repository is specified, `new-app` will either check to see which build strategy to use (**Docker** or **Source**). 
+
+With the former, a runnable image is created, whereas as the latter will try to identify the language by looking at the files in the project's root directory and then use an appropriate builder. 
+
+To build from a local Dockerfile:
+```
+$ oc new-app /path/to/local/or/remote/Dockerfile
 ```
 
-# 1. Scale apps with replicas
+To build from source:
+```
+$ oc new-app path/to/local/or/remote/repository.git
+```
 
-A *replica* is a copy of a pod that contains a running service. By having
-multiple replicas of a pod, you can ensure your deployment has the available
-resources to handle increasing load on your application.
+### 1.2 Creating an app from a DockerHub image
 
-1. `kubectl` provides a `scale` subcommand to change the size of an
-   existing deployment. Let's increase our capacity from a single running instance of
-   `guestbook` up to 10 instances:
+Similar to Docker, OpenShift is also configured to the public image registry DockerHub. If you specify an image that exists in DockerHub, the `new-app` command will create a runnable image directly from this image. 
 
-   ``` console
-   $ kubectl scale --replicas=10 deployment guestbook
-   deployment "guestbook" scaled
-   ```
+For example, if you wanted to create an app from the official nginx image, you would run:
+```
+$ oc new-app nginx
+```
 
-   Kubernetes will now try to make reality match the desired state of
-   10 replicas by starting 9 new pods with the same configuration as
-   the first.
+You not only limited to the DockerHub registry but as with Docker, you are able to specify images that are stored in private registries too:
+```
+$ oc new-app myregistry:8000/example/image
+```
 
-4. To see your changes being rolled out, you can run:
-   `kubectl rollout status deployment guestbook`.
+### 1.3 Creating an app from an OpenShift template
 
-   The rollout might occur so quickly that the following messages might
-   _not_ display:
+OpenShift templates are basically starter applications that have been configured ready for OpenShift. These cover frequently used applications deployed in containers e.g. Ruby, Node and MongoDB. 
 
-   ```console
-   $ kubectl rollout status deployment guestbook
-   Waiting for rollout to finish: 1 of 10 updated replicas are available...
-   Waiting for rollout to finish: 2 of 10 updated replicas are available...
-   Waiting for rollout to finish: 3 of 10 updated replicas are available...
-   Waiting for rollout to finish: 4 of 10 updated replicas are available...
-   Waiting for rollout to finish: 5 of 10 updated replicas are available...
-   Waiting for rollout to finish: 6 of 10 updated replicas are available...
-   Waiting for rollout to finish: 7 of 10 updated replicas are available...
-   Waiting for rollout to finish: 8 of 10 updated replicas are available...
-   Waiting for rollout to finish: 9 of 10 updated replicas are available...
-   deployment "guestbook" successfully rolled out
-   ```
+The [ruby template](https://github.com/sclorg/nodejs-ex#openshift-origin-v3-setup) looks as follows:
 
-5. Once the rollout has finished, ensure your pods are running by using:
-   `kubectl get pods`.
+```
+nodejs-ex
+├── openshift
+│   └── templates
+│       ├── nodejs.json
+│       ├── nodejs-mongodb.json
+│       └── nodejs-mongodb-persistent.json
+├── package.json
+├── README.md
+├── server.js
+├── tests
+│   └── app_test.js
+└── views
+    └── index.html
+```
 
-   You should see output listing 10 replicas of your deployment:
+To deploy it, you can run:
 
-   ```console
-   $ kubectl get pods
-   NAME                        READY     STATUS    RESTARTS   AGE
-   guestbook-562211614-1tqm7   1/1       Running   0          1d
-   guestbook-562211614-1zqn4   1/1       Running   0          2m
-   guestbook-562211614-5htdz   1/1       Running   0          2m
-   guestbook-562211614-6h04h   1/1       Running   0          2m
-   guestbook-562211614-ds9hb   1/1       Running   0          2m
-   guestbook-562211614-nb5qp   1/1       Running   0          2m
-   guestbook-562211614-vtfp2   1/1       Running   0          2m
-   guestbook-562211614-vz5qw   1/1       Running   0          2m
-   guestbook-562211614-zksw3   1/1       Running   0          2m
-   guestbook-562211614-zsp0j   1/1       Running   0          2m
-   ```
+```
+$ oc new-app -f /path/to/nodejs.json
+```
 
-**Tip:** Another way to improve availability is to
-[add clusters and regions](https://console.bluemix.net/docs/containers/cs_planning.html#cs_planning_cluster_config)
-to your deployment, as shown in the following diagram:
+As this template lives in a repo, we could have also run this from source as described in [section 1.1](./#11-creating-an-app-from-source)
 
-![HA with more clusters and regions](../images/cluster_ha_roadmap.png)
+### 1.4 Creating an app from the OpenShift UI
 
-# 2. Update and roll back apps
+If you're not a fan of the cli and wanted a more visual way of deploying applications in your cluster, you also have the option of the OpenShift console. This is available locally at the address given after running `minishift start` as we did in the [setup](https://github.com/mofesal/minishift-101/blob/master/workshop/README.md#start-the-openshift-server):
 
-Kubernetes allows you to do rolling upgrade of your application to a new
-container image. This allows you to easily update the running image and also allows you to
-easily undo a rollout if a problem is discovered during or after deployment.
+```console
+$ minishift start
+...
 
-In the previous lab, we used an image with a `v1` tag. For our upgrade
-we'll use the image with the `v2` tag.
+The server is accessible via web console at:
+    https://192.168.64.11:8443/console
 
-To update and roll back:
-1. Using `kubectl`, you can now update your deployment to use the
-   `v2` image. `kubectl` allows you to change details about existing
-   resources with the `set` subcommand. We can use it to change the
-   image being used.
+You are logged in as:
+    User:     developer
+    Password: <any value>
+```
 
-    ```$ kubectl set image deployment/guestbook guestbook=ibmcom/guestbook:v2```
+Login to the UI:
 
-   Note that a pod could have multiple containers, each with its own name.
-   Each image can be changed individually or all at once by referring to the name.
-   In the case of our `guestbook` Deployment, the container name is also `guestbook`.
-   Multiple containers can be updated at the same time.
-   ([More information](https://kubernetes.io/docs/user-guide/kubectl/kubectl_set_image/).)
+![OpenShift login](../images/openshift_login.png)
 
-3. Run `kubectl rollout status deployment/guestbook` to check the status of
-   the rollout. The rollout might occur so quickly that the following messages
-   might _not_ display:
+As mentioned in the `minishift start` output, you can use the user _developer_ and password as any string of characters (at least one) and you will be able to access the UI.
 
-   ```console
-   $ kubectl rollout status deployment/guestbook
-   Waiting for rollout to finish: 2 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 3 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 3 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 3 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 4 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 4 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 4 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 4 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 4 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 5 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 5 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 5 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 6 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 6 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 6 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 7 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 7 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 7 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 7 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 8 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 8 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 8 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 8 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 9 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 9 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 9 out of 10 new replicas have been updated...
-   Waiting for rollout to finish: 1 old replicas are pending termination...
-   Waiting for rollout to finish: 1 old replicas are pending termination...
-   Waiting for rollout to finish: 1 old replicas are pending termination...
-   Waiting for rollout to finish: 9 of 10 updated replicas are available...
-   Waiting for rollout to finish: 9 of 10 updated replicas are available...
-   Waiting for rollout to finish: 9 of 10 updated replicas are available...
-   deployment "guestbook" successfully rolled out
-   ```
+Access the catalog:
 
-4. Test the application as before, by accessing `<public-IP>:<nodeport>`
-   in the browser to confirm your new code is active.
+![OpenShift catalog](../images/openshift_console.png)
 
-   Remember, to get the "nodeport" and "public-ip" use:
+Once you login, you will be redirected to the browser catalog where there will be a number of sample applications available for you to chose to deploy. This mirrors the OpenShift template steps we saw in [section 1.2](./#12-creating-an-app-from-a-dockerhub-image). We can also create and switch between projects but note, you are limited to the provided sample applications available in the UI.
 
-   `$ kubectl describe service guestbook`
-   and
-   `$ bx cs workers <name-of-cluster>`
+See this [reference](https://docs.openshift.com/enterprise/3.0/dev_guide/new_app.html) for a more comprehensive overview of how to use the `new-app` command to create OpenShift applications.
 
-   To verify that you're running "v2" of guestbook, look at the title of the page,
-   it should now be `Guestbook - v2`
-
-5. If you want to undo your latest rollout, use:
-   ```console
-   $ kubectl rollout undo deployment guestbook
-   deployment "guestbook"
-   ```
-
-   You can then use `kubectl rollout status deployment/guestbook` to see
-   the status.
-
-6. When doing a rollout, you see references to *old* replicas and *new* replicas.
-   The *old* replicas are the original 10 pods deployed when we scaled the application.
-   The *new* replicas come from the newly created pods with the different image.
-   All of these pods are owned by the Deployment.
-   The deployment manages these two sets of pods with a resource called a ReplicaSet.
-   We can see the guestbook ReplicaSets with:
-   ```console
-   $ kubectl get replicasets -l run=guestbook
-   NAME                   DESIRED   CURRENT   READY     AGE
-   guestbook-5f5548d4f    10        10        10        21m
-   guestbook-768cc55c78   0         0         0         3h
-   ```
-
-Before we continue, let's delete the application so we can learn about
-a different way to achieve the same results:
-
- To remove the deployment, use `kubectl delete deployment guestbook`.
-
- To remove the service, use `kubectl delete service guestbook`.
-
-Congratulations! You deployed the second version of the app. Lab 2
-is now complete.
-
-[Next Lab (Lab 3)](../Lab3/README.md)
+Congratulations! You have learnt several ways to create applications in OpenShift! To see how we can manage our applications in OpenShift, let's continue on to the [next Lab (Lab 3)](../Lab3/README.md)
