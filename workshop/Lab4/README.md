@@ -1,4 +1,4 @@
-## 4. Accessing our application
+# 4. Exposing the application
 
 Once you have verified that your application is up and running, you may want to make sure that you can access your application outside of the cluster. There are several ways to do this:
 
@@ -6,7 +6,7 @@ Once you have verified that your application is up and running, you may want to 
 - Port-forwarding
 - Routes
 
-### 4.1 Node port services
+## 4.1 Node port services
 
 This is the cleanest way to access the applications outside of OpenShift environment both locally and publicly. This way essentially makes use of the cluster node's IPs and a port in between the range (30000-32767) and tells OpenShift to proxy to the underlying application via. the port. This is better than the next two solutions for several reasons: we don't have to worry about port clashes, this works for non HTTP based services and finally, does not require a public host name. 
 
@@ -34,7 +34,7 @@ We should then be able to access the application in the browser. In this example
 
 ![OpenShift node app](../images/openshift_node_app.png)
 
-### 4.2 Port-forwarding
+## 4.2 Port-forwarding
 
 Alternatively, if you want to quickly access a port of a specific pod of your cluster, you can also use the oc `port-forward` command:
 
@@ -42,7 +42,7 @@ Alternatively, if you want to quickly access a port of a specific pod of your cl
 $ oc port-forward POD [LOCAL_PORT:]REMOTE_PORT
 ```
 
-### 4.3 Routes
+## 4.3 Routes
 
 For web applications, the most common way to expose it is by a route. A route exposes the service as a host name. You can do this by running the command providing you have a host name available:
 
