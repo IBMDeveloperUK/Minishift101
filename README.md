@@ -13,12 +13,14 @@ This repository contains the hands-on workshops to get started and familiar with
 The workshops below run through a series of scenarios for creating, deploying and managing micro-services within an OpenShift single-node cluster using Minishift. Before running any of the labs, make sure you have correctly installed Minishift along with any other [prerequisites].
 
 - [Setup]
-- [Lab 1]
-- [Lab 2]
-- [Lab 3]
+- [Lab 1]: Creating OpenShift projects
+- [Lab 2]: Creating OpenShift applications
+- [Lab 3]: Managing OpenShift applications
+- [Lab 4]: Exposing OpenShift applications
+
 
 [Setup]: ./workshop
-[prerequisites]: ./workshop
 [Lab 1]: ./workshop/Lab1/README.md
 [Lab 2]: ./workshop/Lab2/README.md
 [Lab 3]: ./workshop/Lab3/README.md
+[Lab 4]: ./workshop/Lab4/README.md
