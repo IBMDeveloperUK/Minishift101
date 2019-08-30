@@ -1,4 +1,4 @@
-# Lab 1. Set up your first project
+# Lab 1. Creating OpenShift projects
 
 Learn how to login to an OpenShift cluster and create a new project in Minishift.
 
