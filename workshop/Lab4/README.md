@@ -1,4 +1,4 @@
-# 4. Exposing the application
+# 4. Exposing OpenShift applications
 
 Once it has been verified that the application is up and running as instructed in the [previous lab (Lab 3)](../Lab3/README.md), the next step is to configure access for the application outside of the cluster. There are several ways to do this:
 
