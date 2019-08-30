@@ -1,6 +1,6 @@
 # Lab 3: Managing your OpenShift applications
 
-You have learnt how to create an OpenShift application but how do you then manage it once it has been created? 
+You have learnt how to create an OpenShift application in the [previous lab (Lab 2)](../Lab2/README.md) but how do you then manage it once it has been created? 
 
 ## 1. Monitoring builds
 
@@ -77,4 +77,4 @@ nodejs-ex   ClusterIP   172.30.6.48   <none>        8080/TCP   14m
 
 As with Kubernetes, each application can be given an internal IP in which we can access our services but unless stated otherwise, this will only be available within the cluster.
 
-Congratulations! You have learnt how to monitor your application builds and deployments within your cluster! To see how we can expose our applications outside of the OpenShift cluster, let's continue on to the [next Lab (Lab 4)](../Lab4/README.md)
+Congratulations! You have learnt how to monitor your application builds and deployments within your cluster! To see how we can expose our applications outside of the OpenShift cluster, let's continue on to the [final Lab (Lab 4)](../Lab4/README.md)
