@@ -1,4 +1,4 @@
-# Lab 2: Create your first application
+# Lab 2: Creating OpenShift application
 
 After creating a project as instructed in the [previous lab (Lab 1)](../Lab1/README.md), the next step is to create an OpenShift application in the cluster.
 
