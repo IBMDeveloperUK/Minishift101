@@ -1,6 +1,6 @@
 # Lab 1. Set up your first project
 
-Learn how to login to your OpenShift cluster and create a new project in Minishift.
+Learn how to login to an OpenShift cluster and create a new project in Minishift.
 
 ## 1. Login to the cluster
 
