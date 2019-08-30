@@ -1,65 +1,59 @@
-# Optional Debugging Lab - Tips and Tricks for Debugging Applications in Kubernetes
+## 4. Accessing our application
 
-Advanced debugging techniques to reach your pods.
+Once you have verified that your application is up and running, you may want to make sure that you can access your application outside of the cluster. There are several ways to do this:
 
-## Pod Logs
+- Node-port services
+- Port-forwarding
+- Routes
 
-You can look at the logs of any of the pods running under your deployments as follows
+### 4.1 Node port services
 
+This is the cleanest way to access the applications outside of OpenShift environment both locally and publicly. This way essentially makes use of the cluster node's IPs and a port in between the range (30000-32767) and tells OpenShift to proxy to the underlying application via. the port. This is better than the next two solutions for several reasons: we don't have to worry about port clashes, this works for non HTTP based services and finally, does not require a public host name. 
+
+To expose our deployment via NodePort, we simply expose the deployment with a _load balancer_ type and label it with name _nodejs-ex-ingress_:
 ```console
-$ kubectl logs <podname>
+$ oc expose dc nodejs-ex --type=LoadBalancer --name=nodejs-ex-ingress
+service/nodejs-ex-ingress exposed
 ```
 
-Remember that if you have multiple containers running in your pod, you
-have to specify the specific container you want to see logs from.
-
+To see the NodePort created, we can run:
 ```console
-$ kubectl logs <pod-name> <container-name>
+$ oc get --export svc nodejs-ex-ingress
+NAME                TYPE           CLUSTER-IP   EXTERNAL-IP    PORT(S)          AGE
+nodejs-ex-ingress   LoadBalancer   <none>       172.29.51.89   8080:31692/TCP   <unknown>
 ```
 
-This subcommand operates like `tail`. Including the `-f` flag will
-continue to stream the logs live once the current time is reached.
-
-
-## kubectl edit and vi
-
-By default, on many Linux and macOS systems, you will be dropped into the editor `vi`.
-```
-export EDITOR=nano
-```
-
-On Windows, a copy of `notepad.exe` will be opened with the contents of the file.
-
-## busybox pod
-
-For debugging live, this command frequently helps me:
+We can use the NodePort in conjuction with the cluster's internal or external IP which we can find in the following command:
 ```console
-kubectl run bb --image busybox --restart=Never -it --rm
+$ oc get node -o wide
+NAME        STATUS    ROLES     AGE       VERSION           INTERNAL-IP     EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION              CONTAINER-RUNTIME
+localhost   Ready     <none>    13h       v1.11.0+d4cacc0   192.168.64.11   <none>        CentOS Linux 7 (Core)   3.10.0-957.5.1.el7.x86_64   docker://1.13.1
 ```
 
-In the busybox image is a basic shell that contains useful utilities.
+We should then be able to access the application in the browser. In this example, we can access the Node application at `192.168.64.11:31692`:
 
-Utils I often use are `nslookup` and `wget`. 
+![OpenShift node app](../images/openshift_node_app.png)
 
-`nslookup` is useful for testing DNS resolution in a pod.
+### 4.2 Port-forwarding
 
-`wget` is useful for trying to do network requests.
+Alternatively, if you want to quickly access a port of a specific pod of your cluster, you can also use the oc `port-forward` command:
 
-## Service Endpoints
-
-Endpoint resource can be used to see all the service endpoints.
-```console
-$ kubectl get endpoints <service>
+```
+$ oc port-forward POD [LOCAL_PORT:]REMOTE_PORT
 ```
 
-## ImagePullPolicy
+### 4.3 Routes
 
-By default Kubernetes will only pull the image on first use. This can
-be confusing during development when you expect changes to show up.
+For web applications, the most common way to expose it is by a route. A route exposes the service as a host name. You can do this by running the command providing you have a host name available:
 
-You should be aware of the three `ImagePullPolicy`s:
- - IfNotPresent - the default, only request the image if not present.
- - Always - always request the image.
- - Never
+```
+$ oc expose svc/nodejs-ex --hostname=www.example.com
+```
 
-More details on image management may be [found here](https://kubernetes.io/docs/concepts/containers/images/).
+Congratulations! You have completed all labs in this workshop! You have learnt how to:
+- Create an OpenShift project
+- Create an OpenShift application in various ways
+- How to monitor the status of an application
+- How to access and expose your application
+
+For more information on how to navigate Minishift, check the [Minishift docs](https://docs.okd.io/latest/minishift/index.html)
