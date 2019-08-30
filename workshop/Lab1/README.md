@@ -32,4 +32,4 @@ Now you should have a new project with the label `nodejs` and your active projec
 $ oc project <display-name>
 ```
 
-Congratulations, you have logged into your cluster and have created your first OpenShift project! To learn how to create your first application move onto [Lab 2](../Lab2/README.md).
+Congratulations, you have logged into your cluster and have created your first OpenShift project! To learn how to create your first application move on to the [next lab (Lab 2)](../Lab2/README.md).
