@@ -1,6 +1,6 @@
-# Lab 2: Create and manage your first application
+# Lab 2: Create your first application
 
-In this lab, we will deploy our first application into our cluster.
+In this lab, we will learn different ways to create an OpenShuft application in the cluster.
 
 ## 1. Creating an app 
 
