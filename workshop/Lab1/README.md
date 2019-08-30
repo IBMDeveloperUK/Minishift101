@@ -7,13 +7,13 @@ Learn how to login to your OpenShift cluster and create a new project in Minishi
 Login to the cluster with the output from the command after running `minishift start` as described in [setup overview](../README.md).
 
 ```
-oc login -u system:admin
+$ oc login -u system:admin
 ```
 
 If you get an error about the `oc` command not being found, you can source it with the following command:
 
 ```
-eval $(minishift oc-env)
+$ eval $(minishift oc-env)
 ```
 
 As you will be able to see, there are several projects available to be able to switch between different workloads.
@@ -23,13 +23,13 @@ As you will be able to see, there are several projects available to be able to s
 You should have a default project setup already but we will create a new project for our new application. 
 
 ```
-oc new-project nodejs-echo --display-name="nodejs" --description="Sample Node.js app"
+$ oc new-project nodejs-echo --display-name="nodejs" --description="Sample Node.js app"
 ```
 
 Now you should have a new project with the label `nodejs` and your active project will now point to it. If you want to switch between projects, run:
 
 ```
-oc project <display-name>
+$ oc project <display-name>
 ```
 
 Congratulations, you have logged into your cluster and have created your first OpenShift project! To learn how to create your first application move onto [Lab 2](../Lab2/README.md).
