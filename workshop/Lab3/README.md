@@ -1,6 +1,6 @@
 # Lab 3: Managing your OpenShift applications
 
-You have learnt how to create an OpenShift application in the [previous lab (Lab 2)](../Lab2/README.md) but how do you then manage it once it has been created? 
+After creating an OpenShift application as instructed in the [previous lab (Lab 2)](../Lab2/README.md), the next step is ensuring it is up and running and finding out how to access it. 
 
 ## 1. Monitoring builds
 
