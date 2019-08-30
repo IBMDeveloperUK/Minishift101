@@ -32,7 +32,7 @@ To [download Minishift](https://docs.okd.io/latest/minishift/getting-started/ins
 Providing you have completed the previous steps successfully, you will now be ready to start the OpenShift server. To do so, you should be able to run:
 
 ```
-minishift start --vm-driver <driver>
+$ minishift start --vm-driver <driver>
 ```
 
 Make sure to replace `<driver>` with the driver that you have used e.g. 'hyperkit' or 'virtualbox'. Once successfully started, you should be given the credentials to login to the cluster and the UI address as shown below:
