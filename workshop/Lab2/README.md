@@ -1,6 +1,6 @@
 # Lab 2: Create your first application
 
-In this lab, we will learn different ways to create an OpenShuft application in the cluster.
+Once you have created a project, as we did in the [previous lab (Lab 1)](../Lab1/README.md) the next step is to create an OpenShift application in the cluster.
 
 ## 1. Creating an app 
 
