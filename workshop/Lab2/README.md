@@ -13,9 +13,9 @@ There are several ways in which you can create an app in OpenShift:
 
 ### 1.1 Creating an app from source
 
-With `oc new-app` command, you can create an application in OpenShift from some existing source code either locally or with the url to the repository. If a source repository is specified, `new-app` will either check to see which build strategy to use (**Docker** or **Source**). 
+With `oc new-app` command, you can create an application in OpenShift from some existing source code either locally or with the url to the repository. If a source repository is specified, `new-app` will check to see which build strategy to use (**Docker** or **Source**). 
 
-With the former, a runnable image is created, whereas as the latter will try to identify the language by looking at the files in the project's root directory and then use an appropriate builder. 
+With the former, a runnable image is created, whereas as the latter, `new-app` will try to identify the language by looking at the files in the project's root directory and then use an appropriate builder. 
 
 To build from a local Dockerfile:
 ```
@@ -36,7 +36,7 @@ For example, if you wanted to create an app from the official nginx image, you w
 $ oc new-app nginx
 ```
 
-You not only limited to the DockerHub registry but as with Docker, you are able to specify images that are stored in private registries too:
+You are not limited to the DockerHub registry, however - as with Docker, you are able to specify images that are stored in private registries too:
 ```
 $ oc new-app myregistry:8000/example/image
 ```
@@ -45,7 +45,7 @@ $ oc new-app myregistry:8000/example/image
 
 OpenShift templates are basically starter applications that have been configured ready for OpenShift. These cover frequently used applications deployed in containers e.g. Ruby, Node and MongoDB. 
 
-The [ruby template](https://github.com/sclorg/nodejs-ex#openshift-origin-v3-setup) looks as follows:
+The [nodejs template](https://github.com/sclorg/nodejs-ex#openshift-origin-v3-setup) looks as follows:
 
 ```
 nodejs-ex
@@ -73,7 +73,7 @@ As this template lives in a repo, we could have also run this from source as des
 
 ### 1.4 Creating an app from the OpenShift UI
 
-If you're not a fan of the cli and wanted a more visual way of deploying applications in your cluster, you also have the option of the OpenShift console. This is available locally at the address given after running `minishift start` as we did in the [setup](https://github.com/mofesal/minishift-101/blob/master/workshop/README.md#start-the-openshift-server):
+If you're not a fan of the cli and wanted a more visual way of deploying applications in your cluster, you also have the option of using the OpenShift console. This is available locally at the address given after running `minishift start` as we did in the [setup](https://github.com/mofesal/minishift-101/blob/master/workshop/README.md#start-the-openshift-server):
 
 ```console
 $ minishift start
@@ -97,7 +97,7 @@ Access the catalog:
 
 ![OpenShift catalog](../images/openshift_console.png)
 
-Once you login, you will be redirected to the browser catalog where there will be a number of sample applications available for you to chose to deploy. This mirrors the OpenShift template steps we saw in [section 1.2](./#12-creating-an-app-from-a-dockerhub-image). We can also create and switch between projects but note, you are limited to the provided sample applications available in the UI.
+Once you login, you will be redirected to the browser catalog where there will be a number of sample applications available for you to chose to deploy. This mirrors the OpenShift template steps we saw in [section 1.2](./#12-creating-an-app-from-a-dockerhub-image). We can also create and switch between projects but note, you are limited to the provided sample applications available in the console catalog.
 
 See this [reference](https://docs.openshift.com/enterprise/3.0/dev_guide/new_app.html) for a more comprehensive overview of how to use the `new-app` command to create OpenShift applications.
 
