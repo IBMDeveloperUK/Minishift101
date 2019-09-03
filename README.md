@@ -2,7 +2,7 @@
 
 # What is OpenShift?
 
-Red Hat® OpenShift® is supported Kubernetes for cloud-native applications with enterprise security. Although Kubernetes has great scalability, workload portability and intuitive abstractions which allows you to seperate business and developer concerns, it is still quite a concern to install, deploy and keep clusters operational. OpenShift is  
+Red Hat® OpenShift® is supported Kubernetes for cloud-native applications with enterprise security. Although Kubernetes has great scalability, workload portability and intuitive abstractions which allows you to seperate business and developer concerns, it is still quite a concern to install, deploy and keep clusters operational.
 
 This repository contains the hands-on workshops to get started and familiar with OpenShift concepts using the Minishift flavour which allows you to create a local OpenShift cluster. 
 
