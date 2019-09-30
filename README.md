@@ -1,4 +1,4 @@
-[日本語はこちら](./REAME-ja.md)
+[日本語はこちら - Japanese version](./REAME-ja.md)
 
 <img src="https://avatars1.githubusercontent.com/u/38341030?s=150&v=4">
 
