@@ -21,7 +21,7 @@ RedHat®OpenShift®は、エンタープライズセキュリティを備えた�
 - [Lab 4]: OpenShiftアプリケーションの公開
 
 
-[Setup]: ./workshop
+[Setup]: ./workshop/README-ja.md
 [Lab 1]: ./workshop/Lab1/README-ja.md
 [Lab 2]: ./workshop/Lab2/README-ja.md
 [Lab 3]: ./workshop/Lab3/README-ja.md
