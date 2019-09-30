@@ -1,4 +1,4 @@
-[in English](./REAME.md)
+[See this lab in English](./README.md)
 
 <img src="https://avatars1.githubusercontent.com/u/38341030?s=150&v=4">
 
