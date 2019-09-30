@@ -7,7 +7,7 @@ OpenShiftクラスターにログインし、Minishiftで新しいプロジェ�
 [セットアップの概要]（../README-ja.md）で説明されているように、 `minishift start`を実行した後、コマンドの出力を使用してクラスターにログインします。
 
 ```
-$ oc login -u system：admin
+$ oc login -u system:admin
 ```
 
 `oc`コマンドが見つからないというエラーが表示された場合、次のコマンドを使用してソースを取得できます。
