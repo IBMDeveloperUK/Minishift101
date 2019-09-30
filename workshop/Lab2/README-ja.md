@@ -73,7 +73,7 @@ $ oc new-app -f /path/to/nodejs.json
 
 ### 1.4 OpenShift UIからアプリケーションを作成
 
-もし、CLIを使うのが苦手な場合で、GUIでクラスターにアプリケーションをデプロイしたい場合は、OpenShiftコンソールを使用するオプションもあります。 これは、 [setup](../README-ja.md#OpenShiftサーバーの開始) :
+もし、CLIを使うのが苦手な場合で、GUIでクラスターにアプリケーションをデプロイしたい場合は、OpenShiftコンソールを使用するオプションもあります。 これは、 [setup](../README-ja.md#OpenShiftサーバーの開始) を参照して下さい。 :
 
 ```console
 $ minishift start
