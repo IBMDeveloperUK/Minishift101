@@ -68,12 +68,12 @@ nodejs-ex
 $ oc new-app -f /path/to/nodejs.json
 ```
 
-As this template lives in a repo, we could have also run this from source as described in [section 1.1](./#11-creating-an-app-from-source)
-このテンプレートはレポジトリに存在するので、[セクション1.1](./#11-ソースコードからアプリケーションを作成) で説明されているように、ソースから実行することもできます。
+
+このテンプレートはレポジトリに存在するので、 [セクション1.1](./#11-ソースコードからアプリケーションを作成) で説明されているように、ソースから実行することもできます。
 
 ### 1.4 OpenShift UIからアプリケーションを作成
 
-もし、CLIを使うのが苦手な場合で、GUIでクラスターにアプリケーションをデプロイしたい場合は、OpenShiftコンソールを使用するオプションもあります。 これは、[setup](https://github.com/mofesal/minishift-101/blob/master/workshop/README-ja.md#OpenShiftサーバーの開始):
+もし、CLIを使うのが苦手な場合で、GUIでクラスターにアプリケーションをデプロイしたい場合は、OpenShiftコンソールを使用するオプションもあります。 これは、 [setup](../README-ja.md#OpenShiftサーバーの開始) :
 
 ```console
 $ minishift start
@@ -97,8 +97,8 @@ UIにログインします:
 
 ![OpenShift catalog](../images/openshift_console.png)
 
-ログインすると、ブラウザカタログにリダイレクトされます。ここには、デプロイすることを選択できるサンプルアプリケーションが多数あります。 これは、[セクション1.2]（./#12-DockerHub-イメージからアプリケーションを作成）で見たOpenShiftテンプレートの手順を反映しています。 プロジェクトを作成してプロジェクトを切り替えることもできますが、コンソールカタログで提供されているサンプルアプリケーションに制限されていることに注意してください。
+ログインすると、ブラウザカタログにリダイレクトされます。ここには、デプロイすることを選択できるサンプルアプリケーションが多数あります。 これは、 [セクション1.2](./#12-DockerHub-イメージからアプリケーションを作成) で見たOpenShiftテンプレートの手順を反映しています。 プロジェクトを作成してプロジェクトを切り替えることもできますが、コンソールカタログで提供されているサンプルアプリケーションに制限されていることに注意してください。
 
 `new-app` コマンドを使用してOpenShiftアプリケーションを作成する方法の包括的な概要については、この [参照](https://docs.openshift.com/enterprise/3.0/dev_guide/new_app.html) を参照してください。
 
-おめでとうございます！ OpenShiftでアプリケーションを作成するいくつかの方法を学びました！ OpenShiftでアプリケーションを管理する方法を見るために、[次のラボ（ラボ3）]（../ Lab3/README-ja.md）に進みましょう。
+おめでとうございます！ OpenShiftでアプリケーションを作成するいくつかの方法を学びました！ OpenShiftでアプリケーションを管理する方法を見るために、 [次のラボ（ラボ3）](../Lab3/README-ja.md) に進みましょう。
