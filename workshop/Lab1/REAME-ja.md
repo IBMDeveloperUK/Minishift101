@@ -32,4 +32,4 @@ $ oc new-project nodejs-echo --display-name="nodejs" --description="Sample Node.
 $ oc project <display-name>
 ```
 
-おめでとうございます。クラスターにログインし、最初のOpenShiftプロジェクトを作成しました。最初のアプリケーションの作成方法を学習するには、[次のラボ（ラボ2）]（../Lab2/README-ja.md）に進みます。
+おめでとうございます。クラスターにログインし、最初のOpenShiftプロジェクトを作成しました。最初のアプリケーションの作成方法を学習するには [次のラボ（ラボ2）](../Lab2/README-ja.md) に進みます。
