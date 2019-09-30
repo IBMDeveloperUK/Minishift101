@@ -57,4 +57,4 @@ To login as administrator:
 # さらにクラスターを構成する
 
 クラスターをセットアップした後、クラスターに適用する特定の要件がある場合があります。 Minishiftツールを使用すると、シングルノードOpenShiftクラスターのライフサイクルを管理できるだけでなく、マシンがプロキシの背後にある場合は、環境変数、永続ストレージ、プロキシオプションを設定できます。 これらの構成の詳細については、次の [リンク](https://docs.okd.io/latest/minishift/using/basic-usage.html#runtime-options) を参照してください。
-すべての設定が完了したら [Lab 1](./Lab1/README.md) に進むことができます。
+すべての設定が完了したら [Lab 1](./Lab1/README-ja.md) に進むことができます。
