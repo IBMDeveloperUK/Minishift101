@@ -4,7 +4,7 @@ OpenShiftクラスターにログインし、Minishiftで新しいプロジェ�
 
 ## 1.クラスターにログインします
 
-[セットアップの概要]（../README-ja.md）で説明されているように、 `minishift start`を実行した後、コマンドの出力を使用してクラスターにログインします。
+[セットアップの概要](../README-ja.md) で説明されているように、 `minishift start`を実行した後、コマンドの出力を使用してクラスターにログインします。
 
 ```
 $ oc login -u system:admin
