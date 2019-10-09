@@ -1,3 +1,5 @@
+[See this lab in English](./README.md)
+
 # セットアップ概要
 
 次のセクションでは、Minishiftのインストール方法と必要な依存関係について説明します。
