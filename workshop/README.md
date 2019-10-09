@@ -1,3 +1,5 @@
+[日本語はこちら - Japanese version](./README-ja.md)
+
 # Setup overview
 
 The following section describes how to install Minishift and the required dependencies.
