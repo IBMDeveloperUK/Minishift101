@@ -8,7 +8,6 @@
 
 ## 4.1 Node port services
 
-This is the cleanest way to access the applications outside of OpenShift environment both locally and publicly. This way essentially makes use of the cluster node's IPs and a port in between the range (30000-32767) and tells OpenShift to proxy to the underlying application via. the port. This is better than the next two solutions for several reasons: we don't have to worry about port clashes, this works for non HTTP based services and finally, does not require a public host name. 
 これは、OpenShift環境外のアプリケーションにローカルおよびパブリックの両方でアクセスする最もクリーンな方法です。 この方法は、本質的に、クラスターノードのIPと範囲（30000〜32767）の間のポートを利用し、OpenShiftはこのポートを介して基になるアプリケーションにプロキシするように指示されます。これはいくつかの理由で次の2つのソリューションよりも優れています。ポートの衝突を心配する必要はありません。これは非HTTPベースのサービスで機能し、パブリックホスト名を必要としません。
 
 NodePortを介してデプロイを公開するには _load balancer_type でデプロイを公開し、 _nodejs-ex-ingress_ という名前でラベルを付けます:
